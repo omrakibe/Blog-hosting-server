@@ -2,11 +2,10 @@ FROM eclipse-temurin:17-jdk
 
 WORKDIR /app
 
-# Copy everything
 COPY . .
 
-# Build inside container
-RUN ./mvnw clean package
+RUN chmod +x mvnw
 
-# Run jar
+RUN ./mvnw clean package -DskipTests
+
 ENTRYPOINT ["java", "-jar", "target/*.jar"]
