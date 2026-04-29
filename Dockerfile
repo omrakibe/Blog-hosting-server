@@ -8,4 +8,7 @@ RUN chmod +x mvnw
 
 RUN ./mvnw clean package -DskipTests
 
-ENTRYPOINT ["java", "-jar", "target/*.jar"]
+# Rename jar to fixed name
+RUN mv target/*.jar app.jar
+
+ENTRYPOINT ["java", "-jar", "app.jar"]
